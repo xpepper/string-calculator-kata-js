@@ -26,7 +26,7 @@ describe('StringCalculator', function () {
       equal(add('1\n2'), 3)
     })
 
-    it.skip('returns sum for custom delimited values', function () {
+    it('returns sum for custom delimited values', function () {
       equal(add('//x\n1x2'), 3)
     })
   })

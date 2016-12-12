@@ -5,4 +5,8 @@ describe('StringCalculator', function () {
   it('returns 0 on empty string', function () {
     equal(StringCalculator.add(''), 0)
   })
+
+  it('returns number for a single number string', function () {
+    equal(StringCalculator.add('1'), 1)
+  })
 })

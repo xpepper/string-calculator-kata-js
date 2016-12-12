@@ -9,4 +9,8 @@ describe('StringCalculator', function () {
   it('returns number for a single number string', function () {
     equal(StringCalculator.add('1'), 1)
   })
+
+  it('returns sum for a comma separated string with 2 values', function () {
+    equal(StringCalculator.add('1,2'), 3)
+  })
 })

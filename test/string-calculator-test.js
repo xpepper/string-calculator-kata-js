@@ -17,4 +17,8 @@ describe('StringCalculator', function () {
   it('returns sum for an unknown number of comma separated values', function () {
     equal(StringCalculator.add('1,2,3,4'), 10)
   })
+
+  it('returns sum for an unknown number of an end-of-line separated values', function () {
+    equal(StringCalculator.add('1\n2'), 3)
+  })
 })

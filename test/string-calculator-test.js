@@ -1,22 +1,45 @@
-const assert = require('assert')
-const calculator = require('../lib/string-calculator')
+const {equal} = require('assert')
 
-describe('string-calculator', function () {
-  describe('add', function () {
-    it('is 0 for an empty string', function () {
-      assert.equal(calculator.add(''), 0)
+describe('StringCalculator', function () {
+  const StringCalculator = require('../lib/string-calculator')
+
+  describe('#add', function () {
+    const {add} = StringCalculator
+
+    it('returns 0 on empty string', function () {
+      equal(add(''), 0)
     })
 
-    it('is a number for a string with only a number', function () {
-      assert.equal(calculator.add('1'), 1)
+    it('returns number for a single number string', function () {
+      equal(add('1'), 1)
     })
 
-    it('is the sum of the numbers for a string of any amount of comma-separated numbers', function () {
-      assert.equal(calculator.add('1,2,3'), 6)
+    it('returns sum for a comma separated string with two values', function () {
+      equal(add('1,2'), 3)
     })
 
-    it('handles also \\n as number delimiter', function () {
-      assert.equal(calculator.add('1\n2'), 3)
+    it('returns sum for an unknown number of comma separated values', function () {
+      equal(add('1,2,3,4'), 10)
+    })
+
+    it('returns sum for an unknown number of an end-of-line separated values', function () {
+      equal(add('1\n2'), 3)
+    })
+
+    it('returns sum for custom delimited values', function () {
+      equal(add('//x\n1x2'), 3)
+    })
+  })
+
+  describe('#parseCustomDelimiter', function () {
+    const {parseCustomDelimiter: parse} = StringCalculator
+
+    it('returns undefined if no custom delimiter is specified', function () {
+      equal(parse('1,2'), undefined)
+    })
+
+    it('returns a custom delimiter', function () {
+      equal(parse('//x\n1x2'), 'x')
     })
   })
 })

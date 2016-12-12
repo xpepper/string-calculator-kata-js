@@ -10,7 +10,11 @@ describe('StringCalculator', function () {
     equal(StringCalculator.add('1'), 1)
   })
 
-  it('returns sum for a comma separated string with 2 values', function () {
+  it('returns sum for a comma separated string with two values', function () {
     equal(StringCalculator.add('1,2'), 3)
+  })
+
+  it('returns sum for an unknown number of comma separated values', function () {
+    equal(StringCalculator.add('1,2,3,4'), 10)
   })
 })

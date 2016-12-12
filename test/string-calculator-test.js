@@ -34,8 +34,8 @@ describe('StringCalculator', function () {
   describe('#parseCustomDelimiter', function () {
     const {parseCustomDelimiter: parse} = StringCalculator
 
-    it('returns empty string if no custom delimiter is specified', function () {
-      equal(parse('1,2'), '')
+    it('returns undefined if no custom delimiter is specified', function () {
+      equal(parse('1,2'), undefined)
     })
 
     it('returns a custom delimiter', function () {
